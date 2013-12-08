@@ -7,8 +7,8 @@ CFLAGS?=        -O2
 all: librngd rngtest
 
 librngd:
-	$(CC) -c -I./src -I$(PREFIX)/include $(CFLAGS) -pthread -g -Wall -Werror ./src/fips.c ./src/stats.c ./src/util.c ./src/viapadlock_engine.c
-	$(AR) rvs librngd.a fips.o stats.o util.o viapadlock_engine.o
+	$(CC) -c -I./src -I$(PREFIX)/include $(CFLAGS) -pthread -g -Wall -Werror ./src/fips.c ./src/stats.c ./src/util.c
+	$(AR) rvs librngd.a fips.o stats.o util.o
 
 rngtest:
 	$(CC) -I./src -I/usr/include -I$(PREFIX)/include $(CFLAGS) -pthread -Wall -Werror ./src/rngtest.c -o rngtest $(PREFIX)/lib/libargp.a ./librngd.a
